@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: o2c-graph-fastapi
+    env: python
+    plan: starter
+    region: oregon
+    repo: https://github.com/<your-username>/<your-repo>
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: true
+      - key: OPENAI_API_KEY
+        sync: true
+      - key: DATA_PATH
+        value: "./sap-order-to-cash-dataset/sap-o2c-data"
+      - key: DB_PATH
+        value: "./o2c.db"
+      - key: FRONTEND_ORIGIN
+        value: "https://<your-frontend>.vercel.app"
+    healthCheckPath: /healthz

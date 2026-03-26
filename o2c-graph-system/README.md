@@ -114,17 +114,53 @@ Value focus:
 
 ## 7. Running the project
 
-1. Start the API:
+### Local backend
+
+1. Start virtualenv and install dependencies:
 
 ```bash
+cd o2c-graph-system
+python -m venv .venv
+.venv/Scripts/activate   # Windows
+source .venv/bin/activate  # macOS/Linux
+pip install -r requirements.txt
+```
+
+2. Set env vars and run local server:
+
+```bash
+set GROQ_API_KEY=<your-key>    # Powershell
+set OPENAI_API_KEY=<your-fallback-key>
 python -m uvicorn main:app --host 127.0.0.1 --port 8002
 ```
 
-2. Run tests:
+### Local frontend
 
 ```bash
+cd ui
+npm install
+set VITE_API_BASE_URL=http://127.0.0.1:8002
+npm run dev
+```
+
+### Running tests
+
+```bash
+cd o2c-graph-system
 python test_api.py
 ```
+
+### Render + Vercel
+
+- Backend environment:
+  - GROQ_API_KEY
+  - OPENAI_API_KEY (optional)
+  - DATA_PATH (defaults to `../sap-order-to-cash-dataset/sap-o2c-data`)
+  - DB_PATH (defaults to `o2c.db`)
+  - FRONTEND_ORIGIN (e.g. https://<your-vercel-app>.vercel.app)
+
+- Frontend environment:
+  - VITE_API_BASE_URL https://<your-backend-host>
 
 3. Verify the demo endpoints:
 

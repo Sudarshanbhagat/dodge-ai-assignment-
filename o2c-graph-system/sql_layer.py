@@ -5,7 +5,8 @@ import sys
 from pathlib import Path
 
 # Database setup
-DB_PATH = "o2c.db"
+DB_PATH = os.getenv("DB_PATH", "o2c.db")
+DATA_DIR = Path(os.getenv("DATA_PATH", "../sap-order-to-cash-dataset/sap-o2c-data"))
 
 
 def get_connection():
@@ -156,10 +157,10 @@ def init_database():
 
 def load_data_to_sql(limit=None):
     """Load data from JSONL files into SQL database."""
-    data_dir = Path("../sap-order-to-cash-dataset/sap-o2c-data")
+    data_dir = DATA_DIR
 
     if not data_dir.exists():
-        print("Data directory not found")
+        print("Data directory not found at", data_dir)
         return
 
     print("Loading data into SQL database...")

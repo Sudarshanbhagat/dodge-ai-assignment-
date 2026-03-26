@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -15,9 +16,14 @@ def startup_event():
     load_data_to_sql()
 
 # Add CORS middleware
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "*")
+allow_origins = [o.strip() for o in frontend_origin.split(",") if o.strip()]
+if not allow_origins:
+    allow_origins = ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers

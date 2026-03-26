@@ -1,0 +1,22 @@
+body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #f6f7fb; color: #20232a; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+header { margin-bottom: 16px; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.control-block { background: white; padding: 12px; border-radius: 10px; border: 1px solid #d9e0ec; width: 260px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.control-block h2 { margin: 0 0 8px; font-size: 16px; }
+.control-block label { display: block; margin-bottom: 6px; font-size: 13px; }
+.control-block input, .control-block textarea { width: 100%; margin-top: 4px; padding: 6px 8px; border-radius: 6px; border: 1px solid #cfd8e3; font-size: 14px; }
+.control-block button { width: 100%; padding: 8px; border: none; background: #4754f0; color: white; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.content { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.graph-panel, .summary-panel { background: white; padding: 12px; border: 1px solid #d9e0ec; border-radius: 10px; width: 100%; min-height: 430px; }
+.graph-panel h3, .summary-panel h3 { margin: 0 0 10px; }
+#outputArea { width: 100%; height: calc(100% - 28px); overflow: auto; background: #161b2c; color: #c8dcff; border-radius: 8px; padding: 8px; font-size:13px; }
+.node { stroke: #243f6b; stroke-width: 1.4px; }
+.node.active { stroke: #2563eb; stroke-width: 2px; }
+.node.inactive { opacity: 0.3; }
+.link { stroke: #5a60ad; stroke-width: 1.8px; }
+.link.active { stroke: #3b82f6; opacity: 1; }
+.link.inactive { opacity: 0.1; }
+.label { font-size: 12px; pointer-events: none; }
+#insightPanel { margin: 10px 0; }
+#aiResponse { margin: 10px 0; }

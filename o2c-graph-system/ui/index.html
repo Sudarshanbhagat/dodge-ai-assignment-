@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O2C Graph Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Order-to-Cash Graph Explorer</h1>
+      <p>Small UI on top of local API: <code>/broken-flows</code>, <code>/trace-flow</code>, <code>/llm-query</code></p>
+    </header>
+
+    <div id="aiResponse"></div>
+
+    <section class="controls">
+      <div class="control-block">
+        <h2>Trace flow</h2>
+        <label>Sales Order ID <input id="orderId" value="740506"></label>
+        <label>Item ID <input id="itemId" value="10"></label>
+        <button id="traceFlowBtn">Trace</button>
+      </div>
+
+      <div class="control-block">
+        <h2>LLM query</h2>
+        <textarea id="llmQueryInput" rows="2" placeholder="e.g., show broken flows"></textarea>
+        <button id="llmQueryBtn">Run Query</button>
+      </div>
+
+      <div class="control-block">
+        <h2>Broken flow summary</h2>
+        <button id="brokenFlowsBtn">Fetch Broken Flows</button>
+      </div>
+    </section>
+
+    <div id="insightPanel"></div>
+
+    <section class="content">
+      <div class="graph-panel">
+        <h3>Graph visualization</h3>
+        <svg id="graphSvg" width="720" height="420"></svg>
+      </div>
+      <div class="summary-panel">
+        <h3>API output</h3>
+        <pre id="outputArea">Start by running a query.</pre>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
